@@ -103,5 +103,5 @@ cp %{_builddir}/%{buildsubdir}/COPYING %{buildroot}/usr/share/license/%{name}
 
 %files gstreamer
 %defattr(-, root, root)
-%{_libdir}/emotion/*gstreamer*.so
+%{_libdir}/emotion/*.so
 %manifest %{name}-gstreamer.manifest
