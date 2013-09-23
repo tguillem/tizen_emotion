@@ -3,7 +3,7 @@ Summary:          Media Library
 Version:          1.7.1+svn.76438slp2+build01
 Release:          1
 Group:            System Environment/Libraries
-License:          BSD
+License:          BSD-2-Clause
 URL:              http://www.enlightenment.org/
 Source0:          %{name}-%{version}.tar.gz
 Requires(post):   /sbin/ldconfig
