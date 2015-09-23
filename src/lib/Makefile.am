@@ -44,6 +44,11 @@ libemotion_la_SOURCES += \
 $(top_srcdir)/src/modules/generic/emotion_generic.c
 endif
 
+if EMOTION_STATIC_BUILD_LIBVLC
+libemotion_la_SOURCES += \
+$(top_srcdir)/src/modules/libvlc/emotion_libvlc.c
+endif
+
 libemotion_la_LIBADD = @EMOTION_LIBS@ @EIO_LIBS@ @EEZE_LIBS@
 
 if EMOTION_STATIC_BUILD_XINE
@@ -52,6 +57,10 @@ endif
 
 if EMOTION_STATIC_BUILD_GSTREAMER
 libemotion_la_LIBADD += @GSTREAMER_LIBS@
+endif
+
+if EMOTION_STATIC_BUILD_LIBVLC
+libemotion_la_LIBADD += @LIBVLC_LIBS@
 endif
 
 libemotion_la_LDFLAGS = -no-undefined @lt_enable_auto_import@ -version-info @version_info@

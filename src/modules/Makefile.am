@@ -1,4 +1,4 @@
 
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = xine gstreamer generic
+SUBDIRS = xine gstreamer generic libvlc

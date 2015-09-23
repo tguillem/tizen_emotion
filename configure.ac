@@ -255,11 +255,12 @@ AC_FUNC_ALLOCA
 EMOTION_CHECK_MODULE([Xine], [${want_xine}])
 EMOTION_CHECK_MODULE([Gstreamer], [${want_gstreamer}])
 EMOTION_CHECK_MODULE([Generic], [${want_generic}])
+EMOTION_CHECK_MODULE([Libvlc], [${want_libvlc}])
 
 EMOTION_CHECK_GENERIC_PLAYER([VLC], [${want_generic_vlc}])
 
-if test "x${enable_xine}" = "xno" && test "x${enable_gstreamer}" = "xno" && test "x${enable_generic}" = "xno" ; then
-   AC_MSG_ERROR([Xine, Gstreamer or Generic backends must be selected to build Emotion])
+if test "x${enable_xine}" = "xno" && test "x${enable_gstreamer}" = "xno" && test "x${enable_generic}" = "xno"  && test "x${enable_libvlc}" = "xno"; then
+   AC_MSG_ERROR([Xine, Gstreamer, Generic or Libvlc backends must be selected to build Emotion])
 fi
 
 # Check if gstreamer X Overlay is available
@@ -306,6 +307,7 @@ src/modules/Makefile
 src/modules/xine/Makefile
 src/modules/gstreamer/Makefile
 src/modules/generic/Makefile
+src/modules/libvlc/Makefile
 src/edje_external/Makefile
 src/generic_players/Makefile
 src/generic_players/vlc/Makefile
@@ -333,6 +335,7 @@ echo "  Modules:"
 echo "    Xine...............: ${enable_xine}"
 echo "    Gstreamer..........: ${enable_gstreamer} (X: ${have_ecore_x}/${build_xoverlay})"
 echo "    Generic............: ${enable_generic}"
+echo "    Libvlc.-...........: ${enable_libvlc}"
 
 if test "x${enable_generic}" = "xyes" || test "x${enable_generic}" = "xstatic"; then
 echo

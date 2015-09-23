@@ -51,6 +51,9 @@ static int _log_dom = -1;
 #define DBG(...) EINA_LOG_DOM_DBG(_log_dom, __VA_ARGS__)
 
 static const char *_external_emotion_engines[] = {
+#ifdef EMOTION_BUILD_LIBVLC
+  "libvlc",
+#endif
 #ifdef EMOTION_BUILD_XINE
   "xine",
 #endif
@@ -64,7 +67,9 @@ static const char *_external_emotion_engines[] = {
 };
 
 static const char _external_emotion_engine_def[] =
-#if  defined(EMOTION_BUILD_XINE)
+#if  defined(EMOTION_BUILD_LIBVLC)
+  "libvlc";
+#elif  defined(EMOTION_BUILD_XINE)
   "xine";
 #elif defined(EMOTION_BUILD_GSTREAMER)
   "gstreamer";

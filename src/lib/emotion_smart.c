@@ -146,6 +146,7 @@ static Eina_Array *_modules = NULL;
 static int _log_domain = -1;
 
 static const char *_backend_priority[] = {
+  "libvlc"
   "gstreamer",
   "xine",
   "generic"
@@ -1895,6 +1896,9 @@ Eina_Bool gstreamer_module_init(void);
 #ifdef EMOTION_STATIC_BUILD_GENERIC
 Eina_Bool generic_module_init(void);
 #endif
+#ifdef EMOTION_STATIC_BUILD_LIBVLC
+Eina_Bool libvlc_module_init(void);
+#endif
 
 static void
 _smart_init(void)
@@ -1946,6 +1950,9 @@ _smart_init(void)
 #endif
 #ifdef EMOTION_STATIC_BUILD_GENERIC
 	generic_module_init();
+#endif
+#ifdef EMOTION_STATIC_BUILD_LIBVLC
+	libvlc_module_init();
 #endif
 
 	static Evas_Smart_Class sc =

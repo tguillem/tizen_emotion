@@ -48,6 +48,29 @@ AS_IF([test "x$have_dep" = "xyes"], [$2], [$3])
 
 ])
 
+dnl use: EMOTION_CHECK_DEP_LIBVLC(want_static[, ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
+
+AC_DEFUN([EMOTION_CHECK_DEP_LIBVLC],
+[
+
+requirement=""
+
+PKG_CHECK_MODULES([LIBVLC],
+   [libvlc >= 3.0 evas >= 1.0.0],
+   [
+    have_dep="yes"
+    requirement="libvlc"
+   ],
+   [have_dep="no"])
+
+if test "x$1" = "xstatic" ; then
+   requirement_emotion="${requirement} ${requirement_emotion}"
+fi
+
+AS_IF([test "x$have_dep" = "xyes"], [$2], [$3])
+
+])
+
 dnl use: EMOTION_CHECK_DEP_GENERIC_VLC(want_static[, ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
 
 AC_DEFUN([EMOTION_CHECK_DEP_GENERIC_VLC],
